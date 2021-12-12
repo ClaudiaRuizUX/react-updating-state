@@ -4,32 +4,26 @@ class ClickityClick extends React.Component {
   constructor() {
     super();
 
-    // Define the initial state:
     this.state = {
-      hasBeenClicked: false
+      toggled: false
     };
   }
 
-//   handleClick = () => {
-//     this.setState({
-//         hasBeenClicked: true
-//       })
-//   };
+  handleClick = () => {
+    this.setState(previousState => {
+      return {
+        toggled: !previousState.toggled
+      }
+    })
+  };
 
-    // handleClick = () => {
-    //     this.setState({
-    //     hasBeenClicked: true
-    //     })
-    //     console.log(this.state.hasBeenClicked); // prints false
-    // }
 
   render() {
     return (
       <div>
-        <p>I have {this.state.hasBeenClicked ? null : 'not'} been clicked!</p>
-        <button onClick={this.handleClick}>Click me!</button>
+        <button onClick={this.handleClick}>{this.state.toggled ? "ON" : "OFF"}</button>
       </div>
-    );
+    )
   }
 }
 
